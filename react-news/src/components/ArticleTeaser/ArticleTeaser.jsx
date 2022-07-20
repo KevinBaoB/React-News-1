@@ -8,15 +8,8 @@ function ArticleTeaser({id, title, date, handleTitleClick}) {
   return (
     <Container>  
         <Row>
-            <Col> 
-                <h2 className='title' onClick={handleTitleClick}>   {title}
-                </h2>
-            </Col>
-            <Col>
-                <p>
-                    {date}
-                </p>
-            </Col>
+            <Col><h2 onClick={() => handleTitleClick(id)}>  {title}</h2></Col>
+            <Col><p>{date}</p></Col>
         </Row>
     </Container>
   )
