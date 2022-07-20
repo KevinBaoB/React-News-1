@@ -1,7 +1,7 @@
 function AppNav() {
 
   return (
-    <nav></nav>
+    <nav>Home</nav>
   )
 }
 

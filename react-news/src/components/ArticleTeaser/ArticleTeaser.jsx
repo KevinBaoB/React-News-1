@@ -1,7 +1,11 @@
 function ArticleTeaser() {
   
   return (
-    <div></div>
+    <div>
+      <p>
+        Such a tease!
+      </p>
+    </div>
   )
 }
 
