@@ -21,33 +21,58 @@ function App() {
     abstract: randomArticle.abstract,
     byline: randomArticle.byline,
     image: randomArticle.multimedia.length ? randomArticle.multimedia[0].url : null,
+    caption: randomArticle.multimedia.length ? randomArticle.multimedia[0].caption : null,
     created_date: randomArticle.created_date
   })
 
+
+  const [multipleArticles, setMultipleArticles] = useState(News.map((article, index) => {
+    return {
+      id: index,
+    title: article.title,
+    abstract: article.abstract,
+    byline: article.byline,
+    image: article.multimedia.length ? article.multimedia[0].url : null,
+    caption: article.multimedia.length ? article.multimedia[0].caption : null,
+    created_date: randomArticle.created_date,
+    }
+    
+  }))
+
+  const [showArticle, setShowArticle] = useState(false);
+  
   const handleNavClick = (clickedItem) => { console.log(clickedItem) }
 
-  const handleTitleClick = (articleID) => { console.log(articleID) }
+  const handleTitleClick = (articleID) => { console.log(articleID) 
+    setShowArticle(!showArticle)
+  }
 
   // renders
   return (
     <div>
-      <h1>AppNav Component</h1>
       <hr />
       <AppNav 
         navItems={navItems} 
         handleNavClick={handleNavClick} 
       />
-      <h1>ArticleTeaser Component</h1>
       <hr />
-      <ArticleTeaser
-        id={article.id}
-        title={article.title}
-        created_date={article.created_date}
-        handleTitleClick={handleTitleClick} 
-      />
-      <h1>Article Component</h1>
-      <hr />
-      <Article {...article} />
+
+      {multipleArticles.map((article) => 
+      <div>
+          <ArticleTeaser
+            id={article.id}
+            title={article.title}
+            date={article.created_date}
+            handleTitleClick={handleTitleClick}
+            />
+            <hr />
+            {showArticle ? <Article {...article}/>: ' ' }
+      </div>
+        )}
+      
+      
+      
+      {/* <Article {...article} /> */}
     </div>
   );
 }

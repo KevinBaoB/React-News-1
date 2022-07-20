@@ -1,10 +1,9 @@
-function Article() {
+function Article(props) {
  
   return (
     <div>
-      <p>
-        'Hello, this is the article'
-      </p>
+       {props.image ? <img src={props.image}/>: <h2>Image not found</h2>}
+       {props.caption ? <h3>{props.caption}</h3> : <h2>No Caption</h2>}
     </div>
   )
 }
